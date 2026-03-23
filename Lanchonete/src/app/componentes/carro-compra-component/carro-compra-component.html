@@ -1,0 +1,514 @@
+<div class="slideleft">
+<!-- Inicio NavBar Menu -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="Menu">
+  <div class="container-fluid d-flex justify-content-between">
+    <a class="navbar-brand text-white d-flex flex-column align-items-center px-3" [routerLink]="['/home']"><i class="fas fa-hamburger"></i> Nome Loja</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item container d-flex justify-content-between">
+          <a class="nav-link active text-white mt-1 d-flex flex-column align-items-center px-2" 
+          [routerLink]="['/home']"><i class="fas fa-home"></i> Home</a></li><li class="nav-item">
+              
+          <a class="nav-link text-white d-flex flex-column align-items-center px-3"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            <i class="fas fa-tags mt-1"></i> Promoção</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white d-flex flex-column align-items-center px-3" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-landmark mt-1"></i> Nos Conheça</a>
+          <ul class="dropdown-menu">
+           <li><a class="dropdown-item" href="#Cardhist">Nossa História</a></li>
+            <li><a class="dropdown-item" href="#Cardhamb">Nossa Carne</a></li>
+            <li><a class="dropdown-item" href="#CardconHecer">Nosso Local</a></li>
+            <li><a class="dropdown-item" href="#Sobre">Mapa do Site</a></li>
+          </ul>
+        </li>
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white d-flex flex-column align-items-center px-2 mt-1"  role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-cog"></i> Mais opções</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/cardapio']">Cardápio</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/mercado']">Comprar Lanche</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/galeria']">Galeria</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/carro-compra']">Carro compra</a></li>
+          </ul></li></ul></div>
+
+          <div class="col-3 ">
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary text-white" [routerLink]="['/carro-compra']">
+            <i class="fas fa-cart-shopping fa-bounce"></i> Sua compra</button></li>
+</div>
+    <div class=" col-sm-2 d-flex nav-item ">
+      <form class="d-flex">
+        <input class="form-control px-5  text-center" type="search" placeholder="Buscar">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+     </div>
+
+         <li class="col-sm-2 d-flex px-5 ">
+  <button  type="button" class="nav-link text-white d-flex flex-column align-items-center gy-4"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin" aria-controls="offcanvasLogin">
+    <i class="fas fa-user"></i> Faça Login </button>
+  </div>
+</nav>
+
+<!-- Canvas de Login -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel">
+  <div class="offcanvas-header h-10">
+    <h5 class="offcanvas-title" id="offcanvasLoginLabel"><i class="fas fa-user-lock"></i> Acesso Restrito</h5>
+    <button type="button" class="btn-close" id="btn-login-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+  </div>
+  <!-- Fim Canvas login -->
+  <!-- Inicio Login e senha html body do canvas Validação form  -->
+   @if (isShown) {
+  <div class="offcanvas-body-login">
+     <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <input class="form-control" type="text" placeholder="Login" name="email" ngModel required>
+      <input class="form-control" type="password" placeholder="Senha" name="senha" ngModel required>
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-sign-in-alt"></i> Logar
+      </button>
+    </form>
+    <br>
+  <div class="d-flex flex-column gap-4">
+ <form class="d-flex flex-column gap-1">
+      <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>  Esqueci minha senha
+      </button>
+    </form>
+</div><!-- Fim Login e senha html body do canvas Validação form  -->
+<br>
+<!-- Inicio botão fazer cadastro  -->
+ <div class="d-flex flex-column gap-4">
+ <form class="d-flex flex-column gap-1">
+ <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Fazer Cadastro</button>
+    </form>
+</div> <!-- Fim botão fazer cadastro  -->
+  </div>
+}
+</div>
+
+<!--Inicio canvas Promoção-->
+<div class="offcanvas offcanvas" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="TopLabelNameOferta">Ofertas da Semana</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+   <div class="card-text col-sm-5 text-center text-dark" style="font-size: large; font-weight: bold;" 
+   id="TopLabelMouseOferta">
+    <p>Passe o mouse na imagem</p>
+</div>
+
+ <!-- Ofertas da Semana html body do canvas -->
+  <div class="offcanvas-body-promocao">
+       <div class="container" id="Container-Slide">
+        <!-- Grid -->
+       <div class="row">
+      <!-- Carrossel 1 -->
+      <div class="col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+              </div>
+          </div>      <!-- Fim Carrossel 1 -->
+
+          <!-- Carrossel 2 -->
+          
+      <div class="col col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+        </div>
+      </div><!-- Fim row --> 
+      <!-- Fim Carrossel 2 -->
+       
+        <!-- Carrossel 3 -->
+          
+      <div class="col col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+        </div>
+      </div>        <!-- Fim Carrossel 3 -->
+      </div><!-- Fim row --> 
+       </div></div></div>  <!--Fim canvas Promoção-->
+<!-- Fim NavBar Menu -->
+
+ <!-- Inicio Carro compra -->
+    <div class=" Container-Carro w-100 h-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card bg-dark text-white" >
+                        <div class="card-body w-100 h-100 px-2" style="border:color-mix(in srgb, rgb(243, 227, 0) 90%, rgb(18, 18, 19) 10%) solid 5px">
+
+                            <div class="row">
+
+                                <div class="col-lg-7">
+                                    <h5 class="cp-novamente">
+                                        <a [routerLink]="['/mercado']" class="text-body">
+                                            <i>Voltar a comprar</i>
+                                        </a>
+                                    </h5>
+                                    <hr>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <h1 class="mb-1">Carro de compras</h1>
+                                            <p class="mb-0">Voce tem 4 compras no carrinho</p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0">
+                                                <span class="text-muted">Compras escolhidas:</span> <a href="#!"
+                                                                                            class="text-body">Preço <i class="fas fa-angle-down mt-1"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src=""
+                                                             class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>Iphone 11 pro</h5>
+                                                        <p class="small mb-0">256GB, Navy Blue</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">2</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <h5 class="mb-0">$900</h5>
+                                                    </div>
+                                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src=""
+                                                             class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>Samsung galaxy Note 10 </h5>
+                                                        <p class="small mb-0">256GB, Navy Blue</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">2</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <h5 class="mb-0">$900</h5>
+                                                    </div>
+                                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src=""
+                                                             class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>Canon EOS M50</h5>
+                                                        <p class="small mb-0">Onyx Black</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">1</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <h5 class="mb-0">$1199</h5>
+                                                    </div>
+                                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3 mb-lg-0">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src=""
+                                                             class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>MacBook Pro</h5>
+                                                        <p class="small mb-0">1TB, Graphite</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 50px;">
+                                                        <h5 class="fw-normal mb-0">1</h5>
+                                                    </div>
+                                                    <div style="width: 80px;">
+                                                        <h5 class="mb-0">$1799</h5>
+                                                    </div>
+                                                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-5">
+
+                                    <div class="card bg-dark text-white rounded-5" style="border:white 1px solid">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h5 class="mb-0">Cartão</h5>
+                                                <img src="assets/img/XCheeder.jpg"
+                                                     class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                                            </div>
+
+                                            <p class="small mb-2">Tipo de cartão</p>
+                                            <a href="#!" type="submit" class="text-white">
+                                                <i class="fab fa-cc-mastercard fa-2x me-2"></i>
+                                            </a>
+                                            <a href="#!" type="submit" class="text-white">
+                                                <i class="fab fa-cc-visa fa-2x me-2"></i>
+                                            </a>
+                                            <a href="#!" type="submit" class="text-white">
+                                                <i class="fab fa-cc-amex fa-2x me-2"></i>
+                                            </a>
+
+
+                                            <form class="mt-4">
+                                                <div class="form-submit form-white mb-4">
+                                                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                                                           placeholder="Nome do cartão" />
+                                                    <label class="form-label" for="typeName">Nome</label>
+                                                </div>
+
+                                                <div class="form-submit form-white mb-4">
+                                                    <input type="text" id="typeNumber" class="form-control form-control-lg" siez="17"
+                                                           placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                                                    <label class="form-label" for="typeNumber">Numero do cartão</label>
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-md-6">
+                                                        <div class="form-submit form-white">
+                                                            <input type="text" id="typeExp" class="form-control form-control-lg"
+                                                                   placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                                                            <label class="form-label" for="typeExp">Data expiração cartão</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-submit form-white">
+                                                            <input type="password" id="typeNum" class="form-control form-control-lg"
+                                                                   placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                                            <label class="form-label" for="typeNum">Codigo de segurança </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Subtotal</p>
+                                                <p class="mb-2">puxar outra tela</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Valor do lanche</p>
+                                                <p class="mb-2"> puxar outra tela</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <p class="mb-2">Total(Incl. taxas)</p>
+                                            </div>
+
+                                            <button type="button" class="form-submit btn btn-info btn-block btn-lg bg-white">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>Puxar valor total compra</span>
+                                                    <span>Efetuar Comprar <!--onclick api compra cartao !--> <i class="fas fa-long-arrow-alt-right ms-2 " ></i></span>
+                                                </div>
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-botaotopo-component></app-botaotopo-component>
+          
+        
+       
+    
+  

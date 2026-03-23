@@ -1,0 +1,426 @@
+*,*::before,*::after{-webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+}
+  html, body
+  {
+  font-size:18px; /*1rem = 18px*/
+  scroll-behavior: smooth;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+}
+ /* Inicio Animação slide-left pagina */
+.animation.active {
+  animation-duration: 1ms;
+  animation-name: slideleft;
+  animation-iteration-count: 1;
+}
+/* Animação slide-left pagina*/
+@keyframes slideleft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Classe simples para aplicar a animação in-ease.... */
+.slideleft {
+  animation: slideleft  2s linear 3ms ;
+}
+
+/* Fim animação pagina geral */
+
+/* Navbar geral */
+#Menu {
+  background: linear-gradient(90deg, #212529, #343a40); /* gradiente escuro */
+  border-bottom: 3px solid #ffc107; /* linha amarela destaque */
+  padding: 0.5rem 1rem;
+  z-index: 999999;
+  position: fixed;
+  width: 100%;
+  margin-top: -109px;
+  border-bottom-color: #e9f0f5;
+  font-style: italic;
+  font-family: cursive;
+  zoom: 90%;
+}
+
+/* Marca da loja */
+#Menu .navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#Menu .navbar-brand:hover {
+  color: #ffc107 !important;
+  transform: scale(1.05);
+}
+
+/* Links principais */
+#Menu .nav-link {
+  color: #f8f9fa !important;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#Menu .nav-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-2px);
+}
+
+/* Dropdown */
+#Menu .dropdown-menu {
+  background-color: #343a40;
+  border: none;
+}
+
+#Menu .dropdown-item {
+  color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+#Menu .dropdown-item:hover {
+  background-color: #495057;
+  color: #ffc107;
+}
+
+/* Botão de compra */
+#Menu .btn-primary {
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#Menu .btn-primary:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+/* Campo de busca */
+#Menu .form-control {
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+}
+
+#Menu .btn-outline-success {
+  border-radius: 20px;
+  border-color: #ffc107;
+  color: #ffc107;
+}
+
+#Menu .btn-outline-success:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Ícones */
+#Menu i {
+  margin-bottom: 3px;
+  font-size: 1rem;
+}
+
+/* Fim Navbar geral */
+
+/* ===== Canvas de Login ===== */
+#offcanvasLogin {
+  background: #e9f0f5; /* fundo escuro */
+  color: #f8f9fa;
+  min-width: 18%;
+  max-height:100% ;
+  margin-top: 0;
+}
+#btn-login-close{
+    position: relative;
+  top: 2px;
+  z-index: 1;
+  pointer-events: auto;
+}
+.offcanvas-backdrop.show{ 
+    display: none;
+  } 
+
+#offcanvasLogin .offcanvas-header {
+  border-bottom: 2px solid #ffc107;
+}
+
+#offcanvasLogin .offcanvas-title {
+  font-weight: bold;
+  color: #ffc107;
+  margin-top: 1dvh;
+}
+
+.offcanvas-body-login .form-control {
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 30px;
+}
+#Canvas-senha{
+  margin-top: 5px;
+}
+
+#offcanvasLogin .btn-success {
+  background-color: #28a745;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 6px;
+}
+
+#offcanvasLogin .btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* ===== Fim Canvas de Login ===== */
+
+
+/* ===== Canvas Promoção ===== */
+#offcanvasTop{
+  background-color:#ffc107;;
+  width: 100%;
+  height: 100%;
+  scale: 100%;
+ 
+}
+
+.offcanvas-body-promocao{
+  margin-top: -80px;
+position: relative;
+
+}
+
+#Container-Slide{
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: grid;
+  grid-template-columns:repeat(570px 1fr) ;
+  width: 100%;
+  
+}
+
+#Container-Slide .card:hover {
+  transform: scale(1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+#Container-Slide img {
+  transition-timing-function: ease-in
+}
+
+#Container-Slide img:hover {
+  transform: scale(1.5); /* zoom ao passar o mouse */
+}
+
+.carousel-control-next ,.carousel-control-prev{
+margin-top: -206px;
+}
+
+.offcanvas-header{
+  margin-top: 105px;
+  height: 36px;
+
+}
+#TopLabelNameOferta{
+  margin-top: -140px;
+  margin-left: 90px;
+}
+
+#TopLabelMouseOferta > p {
+margin-top: -50px;
+height: 60px;
+margin-left: 90px;
+text-align: center;
+text-decoration-line: underline;
+font-weight: bold;
+font-size: 28px;
+}
+.btn-close {
+  position: relative;
+  top: 10px;
+  z-index: 1;
+  pointer-events: auto;
+  
+}
+.carousel-item{
+margin-top: 50px;
+}
+
+.card-title-Canvas{
+height: 25px;
+text-align: center;
+
+}
+
+.card-img-top{
+  width: 100%;
+  height: 220px;
+}
+
+#btn-canvas-compra{
+width: 100%;
+text-align: center;
+flex-wrap: wrap;
+flex-direction: column;
+}
+
+
+/* ===== Cards ===== */
+#btn-compra-cards{
+width: 100%;
+text-align: center;
+flex-wrap: wrap;
+flex-direction: column;
+}
+
+.carousel-control-prev-icon{
+  z-index: 99999;
+  margin-right: 180px;
+  background-color: #000000;
+  opacity: 0.9;
+}
+
+.carousel-control-next-icon{
+ z-index: 99999;
+  margin-left: 180px;
+  background-color: #000000;
+  opacity: 0.9;
+}
+.Card-Slide-Mercado{
+  margin-left: 8px;
+  background-color:#ffc107;
+  border-radius: 10px;
+  margin-right: 4px;
+  width: 99%;
+  zoom:90%;
+}
+
+.card-Title-cardMercado{
+margin-top: 100px;
+}
+.card-title{
+  margin-left: 90px;
+}
+.card {
+  position: relative;
+  margin-top: 30px;
+  border: none;
+}
+.card-Mercado{
+  display: block;
+  letter-spacing: 1px;
+  list-style: none;
+  margin-left: 70px;
+  zoom: calc(90%);
+}
+.card-Mercado img{
+    border-radius: 20%;
+}
+.card-title{
+  color: #000000;
+}
+.card-header-bovina{
+  background-color: #343a40;
+  color: #ffc107;
+  font-weight: bold;
+  font-size: 1.2rem;  
+  border-radius: 8px;
+  border: #f7efef solid 2px;
+  font-family: Cambria;
+  font-style: oblique;
+  font-size: 30px; 
+}
+.card-header:hover{
+  background-color: #000000;
+  color: #fff;
+  font-family: Cambria;
+  font-style: oblique;
+}
+/* ===== Rodapé Geral ===== */
+footer{
+  margin-top: 74px;
+  height: 100%; 
+  zoom: 75%;
+}
+footer h5 li{
+margin-left: 30px;  
+}
+#Sobre {
+  background: #212529; /* fundo escuro */
+  color: #f8f9fa;
+  padding: 2rem 1rem;
+  border-top: 3px solid #ffc107; /* linha amarela destaque */
+}
+#Sobre h5 a{
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffc107; /* títulos em amarelo */
+}
+#Sobre ul {
+  padding-left: 0;
+}
+#Sobre li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+/* ===== Links ===== */
+#Sobre a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#Sobre a:hover {
+  color: #ffc107;
+  text-decoration: underline;
+}
+
+/* ===== Ícones ===== */
+#Sobre i {
+  margin-right: 8px;
+  color: #ffc107;
+}
+
+/* ===== Colunas ===== */
+#Sobre .col-sm-3,
+#Sobre .col-sm-2,
+#Sobre .col {
+  margin-bottom: 1.5rem;
+}
+.Local{
+  margin-top: 25px;
+}
+/* ===== Rodapé Geral ===== */
+
+/* ===== Responsividade ===== */
+
+/* telas menores geral*/
+@media (max-width: 768px) {
+  #Sobre {
+    text-align: center;
+  }
+
+  #Sobre .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Sobre .col-sm-3,
+  #Sobre .col-sm-2,
+  #Sobre .col {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ===== Responsividade ===== */
+/* iphone*/
+
+
+/* ===== Responsividade ===== */
+/* tablets*/

@@ -1,0 +1,357 @@
+<div @pageLeft>
+<!-- Inicio NavBar Menu -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="Menu">
+  <div class="container-fluid d-flex justify-content-between">
+    <a class="navbar-brand text-white d-flex flex-column align-items-center px-3" [routerLink]="['/home']"><i class="fas fa-hamburger"></i> Nome Loja</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item container d-flex justify-content-between">
+          <a class="nav-link active text-white mt-1 d-flex flex-column align-items-center px-2" 
+          [routerLink]="['/home']"><i class="fas fa-home"></i> Home</a></li><li class="nav-item">
+              
+          <a class="nav-link text-white d-flex flex-column align-items-center px-3"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            <i class="fas fa-tags mt-1"></i> Promoção</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white d-flex flex-column align-items-center px-3" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-landmark mt-1"></i> Nos Conheça</a>
+          <ul class="dropdown-menu">
+           <li><a class="dropdown-item" href="#Cardhist">Nossa História</a></li>
+            <li><a class="dropdown-item" href="#Cardhamb">Nossa Carne</a></li>
+            <li><a class="dropdown-item" href="#CardconHecer">Nosso Local</a></li>
+            <li><a class="dropdown-item" href="#Sobre">Mapa do Site</a></li>
+          </ul>
+        </li>
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white d-flex flex-column align-items-center px-2 mt-1"  role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-cog"></i> Mais opções</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/cardapio']">Cardápio</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/mercado']">Comprar Lanche</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/galeria']">Galeria</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/carro-compra']">Carro compra</a></li>
+          </ul></li></ul></div>
+
+          <div class="col-3 ">
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary text-white" [routerLink]="['/carro-compra']">
+            <i class="fas fa-cart-shopping fa-bounce"></i> Sua compra</button></li>
+</div>
+    <div class=" col-sm-2 d-flex nav-item ">
+      <form class="d-flex">
+        <input class="form-control px-5  text-center" type="search" placeholder="Buscar">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+     </div>
+
+         <li class="col-sm-2 d-flex px-5 ">
+  <button  type="button" class="nav-link text-white d-flex flex-column align-items-center gy-4"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin" aria-controls="offcanvasLogin">
+    <i class="fas fa-user"></i> Faça Login </button>
+  </div>
+</nav>
+
+<!-- Canvas de Login -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel">
+  <div class="offcanvas-header h-10">
+    <h5 class="offcanvas-title" id="offcanvasLoginLabel"><i class="fas fa-user-lock"></i> Acesso Restrito</h5>
+    <button type="button" class="btn-close" id="btn-login-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+  </div>
+  <!-- Fim Canvas login -->
+  <!-- Inicio Login e senha html body do canvas Validação form  -->
+   @if (isShown) {
+  <div class="offcanvas-body-login">
+     <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <input class="form-control" type="text" placeholder="Login" name="email" ngModel required>
+      <input class="form-control" type="password" placeholder="Senha" name="senha" ngModel required>
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-sign-in-alt"></i> Logar
+      </button>
+    </form>
+    <br>
+  <div class="d-flex flex-column gap-4">
+ <form class="d-flex flex-column gap-1">
+      <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>  Esqueci minha senha
+      </button>
+    </form>
+</div><!-- Fim Login e senha html body do canvas Validação form  -->
+<br>
+<!-- Inicio botão fazer cadastro  -->
+ <div class="d-flex flex-column gap-4">
+ <form class="d-flex flex-column gap-1">
+ <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Fazer Cadastro</button>
+    </form>
+</div> <!-- Fim botão fazer cadastro  -->
+  </div>
+}
+</div>
+
+<!--Inicio canvas Promoção-->
+<div class="offcanvas offcanvas" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="TopLabelNameOferta">Ofertas da Semana</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+   <div class="card-text col-sm-5 text-center text-dark" style="font-size: large; font-weight: bold;" 
+   id="TopLabelMouseOferta">
+    <p>Passe o mouse na imagem</p>
+</div>
+
+ <!-- Ofertas da Semana html body do canvas -->
+  <div class="offcanvas-body-promocao">
+       <div class="container" id="Container-Slide">
+        <!-- Grid -->
+       <div class="row">
+      <!-- Carrossel 1 -->
+      <div class="col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+              </div>
+          </div>      <!-- Fim Carrossel 1 -->
+
+          <!-- Carrossel 2 -->
+          
+      <div class="col col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+        </div>
+      </div><!-- Fim row --> 
+      <!-- Fim Carrossel 2 -->
+       
+        <!-- Carrossel 3 -->
+          
+      <div class="col col-xs-2  col-sm-3 col-xls-6  px-1 py-3 mx-2" id="Img-Interna-Canvas">
+        <div id="carousel3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-Canvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt hamburger">
+                <div class="card-body-Canvas" >
+                  <h5 class="card-title-Canvas bg-warning">Smalt Frango</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne bovina de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada </li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                
+                <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="cardCanvas-promocao bg-primary text-black">
+                <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
+                <div class="card-body-canvas">
+                  <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
+                  <ul>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
+                  </ul>
+                  <h5 class="card-title-Canvas bg-warning">Descrição</h5>
+                  <ul>
+                  <li>Carne de 150g</li>
+                  <li>alface, tomate, Cebola caramenizada</li>
+                  <li> Moolho especial da casa</li>
+                  </ul>
+                </div>
+                 <button type="button" class="btn btn-success text-white" id="btn-canvas-compra" [routerLink]="['/carro-compra']">Comprar</button>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+          </button>
+        </div>
+      </div>        <!-- Fim Carrossel 3 -->
+      </div><!-- Fim row --> 
+       </div></div></div>  <!--Fim canvas Promoção-->
+<!-- Fim NavBar Menu -->
+
+
+
+<div class="nome-provisorio">
+  <h1>Galeria fotos</h1>
+  <p>em contrução</p>
+  <source> <img src="/Lanchonete/src/assets/img/HamburguerTratado.jpg" alt="">
+</div>
+
+<div class="Nome-provisorio_2">
+<h1>Galeria fotos</h1>
+  <source> <img src="/Lanchonete/src/assets/img/HamburguerTratado.jpg" alt="">
+
+</div>
+<div class="Nome-provisorio_2">
+<h1>Galeria fotos</h1>
+  <source> <img src="/Lanchonete/src/assets/img/HamburguerTratado.jpg" alt="">
+
+</div>
+
+
+
+<!-- Rodapé Footer -->
+<footer class="card-footer text-text-white d-flex flex-column" id="Sobre">
+  <div class="container">
+    <div class="row">
+      <div class="col" id="MapaFooter">
+        <h5><i class="fas fa-clock"></i> Funcionamento</h5>
+        <ul class="list-unstyled">
+          <li>08:00 às 23:00</li>
+          <li>Segunda à sábado e feriados</li>
+          <li>Atendemos até um raio de 5KM</li>
+        </ul>
+      </div>
+      <div class="col-sm-3 py-0 ms-2 gy-4"  >
+        <h5><i class="fas fa-sitemap"></i> Mapa do Site</h5>
+        <ul class="list-unstyled">
+          <li><a [routerLink]="['/mercado']" class="text-white"><i class="fas fa-store"></i> Mercado</a></li>
+          <li><a [routerLink]="['/galeria']" class="text-white"><i class="fas fa-images"></i> Galeria de fotos</a></li>
+          <li><a [routerLink]="['/cardapio']" class="text-white"><i class="fas fa-utensils"></i> Cardápio</a></li>
+          <li><a [routerLink]="['/carro-compra']" class="text-white"><i class="fas fa-utensils"></i> Carro de compra</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3 py-0 ms-1 gy-4">
+        <h5><i class="fas fa-address-book"></i> Contatos</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://www.ifood.com.br" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-apple"></i> IFOOD</a></li>
+          
+          <li><a href="https://wa.me//5511985273296?text=Vamos Matar sua Fome Hoje?" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+          <li><a href="https://www.Instagram.com.br" target="_blank"><i class="fab fa-instagram" ></i> Instagram</a></li>
+          <li><a href="https://www.facebook.com.br" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-sm-2 gy-4" id="MapaFooterPag">
+  <h5><i class="fas fa-credit-card"></i> Pagamentos</h5>
+  <ul class="list-unstyled">
+    <li><i class="fas fa-credit-card"></i> Crédito</li>
+    <li><i class="fas fa-utensils"></i> VR</li>
+    <li><i class="fas fa-utensils"></i> Alelo Refeição</li>
+    <li><i class="fas fa-credit-card"></i> Débito</li>
+    <li><i class="fas fa-money-bill-wave"></i> Dinheiro</li>        
+        </ul>
+      </div>
+      <div class="Local col py-0">
+        <h5><i class="fas fa-map-marker-alt"></i> Localidade</h5>
+        <ul class="list-unstyled">
+          <li><a href="http://google.com/maps/place/R.+Augusta,+1808+Parking/@-23.5584069,-46.6656959,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce59d2a10e91ab:0x4a36dd4a7e382e79!8m2!3d-23.5584119!4d-46.6610825!16s%2Fg%2F11tjbvsz8p?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-white">Localização no mapa</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</footer>
+<app-botaotopo-component></app-botaotopo-component>
+
+</div>

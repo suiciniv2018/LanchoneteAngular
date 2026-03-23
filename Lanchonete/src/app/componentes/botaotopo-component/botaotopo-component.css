@@ -1,0 +1,26 @@
+.topo-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #0d6efd; /* azul bootstrap */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.topo-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.topo-btn:hover {
+  background-color: #0b5ed7; /* azul mais escuro */
+}

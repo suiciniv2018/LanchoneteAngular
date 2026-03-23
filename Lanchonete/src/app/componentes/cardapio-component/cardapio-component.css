@@ -1,0 +1,251 @@
+*,*::before,*::after{-webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+}
+  html, body
+  {
+  font-size:18px; /*1rem = 18px*/
+  scroll-behavior: smooth;
+  }
+  
+/* Navbar geral */
+#Menu {
+  background: linear-gradient(90deg, #212529, #343a40); /* gradiente escuro */
+  border-bottom: 3px solid #ffc107; /* linha amarela destaque */
+  padding: 0.5rem 1rem;
+  z-index: 999999;
+  position: fixed;
+  width: 100%;
+  margin-top: -103px;
+  zoom:90%
+}
+
+/* Marca da loja */
+#Menu .navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#Menu .navbar-brand:hover {
+  color: #ffc107 !important;
+  transform: scale(1.05);
+}
+
+/* Links principais */
+#Menu .nav-link {
+  color: #f8f9fa !important;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#Menu .nav-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-2px);
+}
+
+/* Dropdown */
+#Menu .dropdown-menu {
+  background-color: #343a40;
+  border: none;
+}
+
+#Menu .dropdown-item {
+  color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+#Menu .dropdown-item:hover {
+  background-color: #495057;
+  color: #ffc107;
+}
+
+/* Botão de compra */
+#Menu .btn-primary {
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#Menu .btn-primary:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+/* Campo de busca */
+#Menu .form-control {
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+}
+
+#Menu .btn-outline-success {
+  border-radius: 20px;
+  border-color: #ffc107;
+  color: #ffc107;
+}
+
+#Menu .btn-outline-success:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Ícones */
+#Menu i {
+  margin-bottom: 3px;
+  font-size: 1rem;
+}
+
+/* Fim Navbar geral */
+
+/* ===== Canvas de Login ===== */
+#offcanvasLogin {
+  background: #e9f0f5; /* fundo escuro */
+  color: #f8f9fa;
+  min-width: 18%;
+  max-height:100% ;
+  margin-top: 0;
+}
+#btn-login-close{
+    position: relative;
+  top: 2px;
+  z-index: 1;
+  pointer-events: auto;
+}
+.offcanvas-backdrop.show{ 
+    display: none;
+  } 
+
+#offcanvasLogin .offcanvas-header {
+  border-bottom: 2px solid #ffc107;
+}
+
+#offcanvasLogin .offcanvas-title {
+  font-weight: bold;
+  color: #ffc107;
+  margin-top: 1dvh;
+}
+
+.offcanvas-body-login .form-control {
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 30px;
+}
+#Canvas-senha{
+  margin-top: 5px;
+}
+
+#offcanvasLogin .btn-success {
+  background-color: #28a745;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 6px;
+}
+
+#offcanvasLogin .btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* ===== Fim Canvas de Login ===== */
+
+
+/* ===== Canvas Promoção ===== */
+#offcanvasTop{
+  background-color:#fae469;
+  width: 100%;
+  height: 100%;
+  scale: 100%;
+ 
+}
+
+.offcanvas-body-promocao{
+  margin-top: -80px;
+  position: relative;
+
+}
+
+#Container-Slide{
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: grid;
+  grid-template-columns:repeat(670px 1fr) ;
+  width: 100%;
+  
+}
+
+#Container-Slide .card:hover {
+  transform: scale(1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+#Container-Slide img {
+  transition-timing-function: ease-in
+}
+
+#Container-Slide img:hover {
+  transform: scale(1.5); /* zoom ao passar o mouse */
+}
+
+.carousel-control-next ,.carousel-control-prev{
+margin-top: -206px;
+}
+
+.offcanvas-header{
+  margin-top: 105px;
+  height: 36px;
+
+}
+#TopLabelNameOferta{
+  margin-top: -140px;
+  margin-left: 90px;
+}
+
+#TopLabelMouseOferta > p {
+margin-top: -50px;
+height: 60px;
+margin-left: 90px;
+text-align: center;
+text-decoration-line: underline;
+font-weight: bold;
+font-size: 28px;
+}
+.btn-close {
+  position: relative;
+  top: 10px;
+  z-index: 1;
+  pointer-events: auto;
+  
+}
+.carousel-item{
+margin-top: 50px;
+}
+
+.card-title-Canvas{
+height: 25px;
+text-align: center;
+}
+
+
+.card-img-top{
+  width: 100%;
+  height: 220px;
+}
+
+#btn-canvas-compra{
+width: 100%;
+}
+/* ===== Fim Canvas Promoção ===== */
+
+/* ===== Inicio Cardapio*/
+.container-cardapio{
+margin-top: 142px;
+margin-left: 0px;
+width: 100%;
+height: fit-content;
+zoom: 70%;
+
+}
