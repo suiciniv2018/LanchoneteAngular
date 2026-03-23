@@ -7,6 +7,31 @@
   font-size:18px; /*1rem = 18px*/
   scroll-behavior: smooth;
   }
+  /* Inicio Animação slide-left pagina */
+.animation.active {
+  animation-duration: 1ms;
+  animation-name: slideleft;
+  animation-iteration-count: 1;
+}
+
+/* Animação slide-left pagina*/
+@keyframes slideleft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Classe simples para aplicar a animação in-ease.... */
+.slideleft {
+  animation: slideleft  2s linear 3ms ;
+}
+
+/* Fim animação pagina geral */
+
   
 /* Navbar geral */
 #Menu {
@@ -236,12 +261,7 @@ text-align: center;
 
 #btn-canvas-compra{
 width: 100%;
-}
-/* ===== Fim Canvas Promoção ===== */
-
-
-
-
+}/* ===== Fim Canvas Promoção ===== */
 .nome-provisorio{
   margin-top: 100px;
   width: 100%;
@@ -253,14 +273,7 @@ width: 100%;
     background-color: #e9f0f5;
   width: 100%;
   height: 100%;
-
 }
-
-
-
-
-
-
 /* ===== Rodapé Geral ===== */
 footer{
   margin-top: 74px;
