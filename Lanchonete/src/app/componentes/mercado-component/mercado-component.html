@@ -248,9 +248,9 @@
                 <div class="card-body-canvas">
                   <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
                   <ul>
-                  <li> Preço: R$ 18,00 unidade</li>
-                  <li>Preço: R$ 20,00 unidade</li>
-                  <li>Preço: R$ 30,00 unidade</li>
+                  <li>valor: R$ 18,00 unidade</li>
+                  <li>valor: R$ 20,00 unidade</li>
+                  <li>valor: R$ 30,00 unidade</li>
                   </ul>
                   <h5 class="card-title-Canvas bg-warning">Descrição</h5>
                   <ul>
@@ -276,387 +276,140 @@
       </div>
     </div>  <!--Fim canvas Promoção-->
 <div class="card-container-compra">
-<!-- Titulo cards -->
- <div class="card-Title-cardMercado">
+
+  <!-- Título geral -->
+  <div class="card-Title-cardMercado">
     <h1 class="card-title">Com fome hoje?</h1>
     <h3 class="card-title">Não passe vontade, Mate sua fome!</h3>
   </div>
-<!-- Inicio card mercado Carne -->
+
+  <!-- Slide Carne -->
+  <div class="Card-Slide-Mercado">
+    <div class="card-Title-cardMercado">
+      <h1 class="card-title">Lanches Carne Bovina</h1>
+    </div>
+    <div id="carouselCarne" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselCarne" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselCarne" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselCarne" data-bs-slide-to="2"></button>
+      </div>
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            @for (carroService of CarneSelecionadoMercado.slice(0, 4); track $index) {
+              <div class="col-md-3 d-flex">
+                <div class="card-Mercado">
+                  <img [src]="carroService.Image" class="card-img-top" alt="{{carroService.nome}}">
+                  <div class="card-body">
+                    <h5 class="card-Title">Lanche: {{carroService.nome}}</h5>
+                    <p class="card-text">Descrição: {{carroService.descricao}}</p>
+                    <p class="card-text">Valor: R${{carroService.valor | number:'1.2-2'}}</p>
+                    <a [routerLink]="['/carro-compra']"class="btn btn-primary"(click)="Comprar(carroService)"
+                       id="btn-compra-cards">Comprar</a>
+                  </div>
+                  <br><br>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+            <!-- SLIDE 2 -->         
+    <div class="carousel-item">
+      <div class="row">
+        @for (carroService of CarneSelecionadoMercado.slice(4,8); track $index) {
+          <div class="col-md-3 d-flex">
+            <div class="card-Mercado">
+              <img [src]="carroService.Image" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-Title">Lanche: {{carroService.nome}}</h5>
+                  <p class="card-text">Descrição: {{carroService.descricao}}</p>
+                  <p class="card-text">Valor: R${{carroService.valor | number:'1.2-2'}}</p>
+                  <a [routerLink]="['/carro-compra']"class="btn btn-primary"(click)="Comprar(carroService)" 
+                  id="btn-compra-cards">Comprar</a>
+              </div>
+           </div>
+          </div>
+        }
+      </div>
+    </div>
+
+  
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCarne" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCarne" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+  <!-- Slide Vegetariano -->
 <div class="Card-Slide-Mercado">
   <div class="card-Title-cardMercado">
-    <h1 class="card-title">Lanches Carne Bovina</h1>
+    <h1 class="card-title">Lanches Vegetarianos</h1>
   </div>
-
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselVeg" class="carousel slide" data-bs-ride="carousel">
     <!-- Indicadores -->
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#carouselVeg" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselVeg" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselVeg" data-bs-slide-to="2"></button>
     </div>
-
-    <!-- container Slides card 1 -->
+    <!-- Slides -->
     <div class="carousel-inner">
-      <div class="carousel-item active">
+     <div class="carousel-item active">
         <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <!-- container SLIDE item 1 -->
-            <div class="card-Mercado" style="width: 18rem;">
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">Carne Premium</h5>
-                <p class="card-text">Lanche bovino.</p>
+          @for (carroServiceVeg of VegetaSelecionadoMercado.slice(0, 4); track $index) {
+            <div class="col-md-3 d-flex ">
+              <div class="card-Mercado">
+                <img [src]="carroServiceVeg.Image" class="card-img-top" alt="{{carroServiceVeg.nome}}">
+                <div class="card-body">
+                  <h5 class="card-Title">Lanche: {{carroServiceVeg.nome}}</h5>
+                  <p class="card-text">Descrição: {{carroServiceVeg.descricao}}</p>
+                  <p class="card-text">Valor: R${{carroServiceVeg.valor | number:'1.2-2'}}</p>
+                  <a [routerLink]="['/carro-compra']"class="btn btn-primary"(click)="Comprar(carroServiceVeg)" 
+                  id="btn-compra-cards">Comprar</a>
+                </div>
+                <br><br>
               </div>
-              <a [routerLink]="['/carro-compra']"class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Bacon</h5>
-                <p class="card-text">Lanche delicioso.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary"id="btn-compra-cards" >Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <!-- container SLIDE item 3 -->
-            <div class="card-Mercado" style="width: 18rem;">
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Salada</h5>
-                <p class="card-text"> Lanche para matar sua fome.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary " id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 4 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Tudo</h5>
-                <p class="card-text">O mais completo da casa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
+           </div>
+          }
         </div>
       </div>
-
-      <!-- Container SLIDE card 2 -->
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
+   
+          <!-- SLIDE 2 -->
+    <div class="carousel-item">
+      <div class="row">
+        @for (carroServiceVeg of VegetaSelecionadoMercado.slice(4,8); track $index) {
+          <div class="col-md-3 d-flex">
+            <div class="card-Mercado">
+              <img [src]="carroServiceVeg.Image" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">X-Frango</h5>
-                <p class="card-text">Leve e crocante.</p>
+                <h5 class="card-Title">Lanche: {{ carroServiceVeg.nome }}</h5>
+                  <p class="card-text">Descrição: {{carroServiceVeg.descricao}}</p>
+                  <p class="card-text">Valor: R${{carroServiceVeg.valor | number:'1.2-2'}}</p>
+                  <a [routerLink]="['/carro-compra']"class="btn btn-primary"(click)="Comprar(carroServiceVeg)" 
+                  id="btn-compra-cards">Comprar</a>
               </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
+              <br><br>
+             </div>
           </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Calabresa</h5>
-                <p class="card-text">Sabor marcante.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Picanha</h5>
-                <p class="card-text">Premium e suculento.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-BBQ</h5>
-                <p class="card-text">Com molho especial.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-        </div>
+        }
       </div>
-
-      <!-- Container SLIDE card  3 -->
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-               <!-- container SLIDE item 3 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Veggie</h5>
-                <p class="card-text">Opção vegetariana deliciosa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-               <!-- container SLIDE item 3 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Duplo</h5>
-                <p class="card-text">Dois hambúrgueres suculentos.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-               <!-- container SLIDE item 3 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Bacon Egg</h5>
-                <p class="card-text">Bacon + ovo = perfeito.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-               <!-- container SLIDE item 3 -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Supremo</h5>
-                <p class="card-text">O mais pedido da casa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
     <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselVeg" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
     </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselVeg" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
-    </div>
-  </div>
-</div>
-<!-- fim card mercado carne -->
-
-<!-- Inicio card mercado Vegetariano -->
-<div class="Card-Slide-Mercado">
-  <div class="card-Title-cardMercado">
-    <h1 class="card-title">Lanches vegetarianos</h1>
-  </div>
-
-  <div id="carouselExampleCaptions-veg" class="carousel slide" data-bs-ride="carousel">
-    <!-- Indicadores -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions-veg" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions-veg" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions-veg" data-bs-slide-to="2"></button>
-    </div>
-
-    <!-- Containers Slides vegetarianos -->
-    <div class="carousel-inner">
-      <!-- container SLIDE 1 vegetariano -->
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 1 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">Vegetariano Premium</h5>
-                <p class="card-text">Lanche vegetal.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 1 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Bacon vegetariano</h5>
-                <p class="card-text">Lanche delicioso.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 1 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Salada vegetariano</h5>
-                <p class="card-text"> Lanche para matar sua fome.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 1 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top" alt="X-Bacon">
-              <div class="card-body">
-                <h5 class="card-title">X-Tudo vegetariano</h5>
-                <p class="card-text">O mais completo da casa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- container SLIDE 2 vegetariano -->
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Frango vegetariano</h5>
-                <p class="card-text">Leve e crocante.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Calabresa vegetariano</h5>
-                <p class="card-text">Sabor marcante.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Picanha vegetariano</h5>
-                <p class="card-text">Premium e suculento.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 2 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-BBQ vegetariano</h5>
-                <p class="card-text">Com molho especial.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- container SLIDE 3 vegetariano -->
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 3 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Vegetariano</h5>
-                <p class="card-text">Opção vegetariana deliciosa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 3 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-grao de bico</h5>
-                <p class="card-text">Dois hambúrgueres suculentos.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 3 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Bacon Egg</h5>
-                <p class="card-text">Bacon + ovo = perfeito.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-
-          <div class="col-md-3 d-flex flex-column mt-auto h-100">
-            <div class="card-Mercado" style="width: 18rem;">
-              <!-- container SLIDE item 3 vegetariano -->
-              <img src="../assets/img/Xbacon.jpg" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">X-Supremo vegetariano</h5>
-                <p class="card-text">O mais pedido da casa.</p>
-              </div>
-              <a [routerLink]="['/carro-compra']" class="btn btn-primary" id="btn-compra-cards">Comprar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions-veg" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions-veg" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-    </div>
-  </div>
+ </div>
 </div>
 
-
-     
       <!-- Rodapé Footer -->
 <footer class="card-footer text-text-white d-flex flex-column" id="Sobre">
   <div class="container">
@@ -709,6 +462,7 @@
   </div>
 
 </footer>
+</div>
 </div>
 <app-botaotopo-component></app-botaotopo-component>
 
