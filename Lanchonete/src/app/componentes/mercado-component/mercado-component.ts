@@ -16,9 +16,8 @@ import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
   providers:[ CarroServiceIMGMarket, CarroServiceIMGMarketVegetariano],
   templateUrl: './mercado-component.html',
   styleUrls: ['./mercado-component.css'],
- 
-
 })
+
 export class MercadoComponent implements OnInit {
   //Variável para controle de exibição de elementos na página.
   isShown: boolean = false ||true;

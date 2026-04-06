@@ -38,17 +38,31 @@
             <li><a class="dropdown-item" [routerLink]="['/carro-compra']">Carro compra</a></li>
           </ul></li></ul></div>
 
-          <div class="col-3 ">
-        <li class="nav-item">
-          <button type="button" class="btn btn-primary text-white" [routerLink]="['/carro-compra']">
-            <i class="fas fa-cart-shopping fa-bounce"></i> Sua compra</button></li>
+        <div class="position-relative">
+
+  <!-- Ícone do carrinho -->
+  <button type="button"
+          class="btn btn-primary text-white"
+          [routerLink]="['/carro-compra']">
+    <i class="fas fa-shopping-cart"></i>
+  </button>
+
+  <!-- Badge com quantidade -->
+  <span *ngIf="QuantidadeTotal > 0"
+        class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+    {{ QuantidadeTotal }}
+  </span>
+
 </div>
-    <div class=" col-sm-2 d-flex nav-item ">
-      <form class="d-flex">
-        <input class="form-control px-5  text-center" type="search" placeholder="Buscar">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-     </div>
+
+<div class="col-sm-2 d-flex nav-item">
+  <form class="d-flex">
+    <input class="form-control px-5 text-center" type="search" placeholder="Buscar">
+    <button class="btn btn-outline-success" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
 
          <li class="col-sm-2 d-flex px-5 ">
   <button  type="button" class="nav-link text-white d-flex flex-column align-items-center gy-4"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin" aria-controls="offcanvasLogin">
@@ -289,7 +303,7 @@
                             <div class="row">
 
                                 <div class="col-lg-7">
-                                    <h5 class="cp-novamente">
+                                    <h5 class="card cp-novamente text-white">
                                         <a [routerLink]="['/mercado']" class="text-body">
                                             <i>Voltar a comprar</i>
                                         </a>
@@ -304,7 +318,7 @@
                                         <div>
                                             <p class="mb-0">
                                                 <span class="text-muted">Compras escolhidas:</span> <a href="#!"
-                                                                                            class="text-body">Preço <i class="fas fa-angle-down mt-1"></i></a>
+                                               class="text-body">Preço <i class="fas fa-angle-down mt-1"></i></a>
                                             </p>
                                         </div>
                                     </div>
@@ -357,13 +371,11 @@
   </div>
 </div>
 
-<!-- TOTAL DO CARRINHO -->
-<div class="card mt-3">
-  <div class="card-body text-end">
-    <h2>Total: R$ {{ total | number:'1.2-2' }}</h2>
-  </div>
-</div>                              <div class="col-lg-5">
-
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divider-short"> </div>
+                             <div class="col-md-5 container-cartao">
                                     <div class="card bg-dark text-white rounded-5" style="border:white 1px solid">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -372,15 +384,17 @@
                                                      class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
                                             </div>
 
-                                            <p class="small mb-2">Tipo de cartão</p>
+                                            <p class="small mb-4 mx-3 w-100 h-100">Tipo de cartão</p>
+
                                             <a href="#!" type="submit" class="text-white">
-                                                <i class="fab fa-cc-mastercard fa-2x me-2"></i>
+                                                <i class="fab fa-cc-mastercard fa-4x me-2"></i>
                                             </a>
                                             <a href="#!" type="submit" class="text-white">
-                                                <i class="fab fa-cc-visa fa-2x me-2"></i>
+                                                <i class="fab fa-cc-visa fa-4x me-2 "></i>
                                             </a>
-                                            <a href="#!" type="submit" class="text-white">
-                                                <i class="fab fa-cc-amex fa-2x me-2"></i>
+                                            
+                                            <a href="#!" type="submit" class=" col-2  text-white icone-container">
+                                                <i class="fab fa-cc-amex fa-4x me-2"></i>
                                             </a>
 
 
@@ -415,26 +429,19 @@
                                                 </div>
 
                                             </form>
-
                                             <hr class="my-4">
-
-                                            <div class="d-flex justify-content-between">
-                                                <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2">puxar outra tela</p>
-                                            </div>
-
-                                            <div class="d-flex justify-content-between">
-                                                <p class="mb-2">Valor do lanche</p>
-                                                <p class="mb-2"> puxar outra tela</p>
+                                           <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Total: R$ {{ total | number:'1.2-2' }}</p>
                                             </div>
 
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total(Incl. taxas)</p>
                                             </div>
 
-                                            <button type="button" class="form-submit btn btn-info btn-block btn-lg bg-white">
-                                                <div class="d-flex justify-content-between">
-                                                    <span>Puxar valor total compra</span>
+                                            <button type="button" class="form-submit btn btn-info btn-lg bg-white py-3 ">
+                                                <div class=" col justify-content-end d-flex ms-2  ">
+                                                    <span large>Total: R$ {{ total | number:'1.2-2' }}</span>
+                                                    <span class="divisor">|</span>
                                                     <span>Efetuar Comprar <!--onclick api compra cartao !--> <i class="fas fa-long-arrow-alt-right ms-2 " ></i></span>
                                                 </div>
                                             </button>
@@ -443,15 +450,17 @@
                                     </div>
 
                                 </div>
-
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
+            
         </div>
+
     </div>
+
+    </div> 
+    
+  </div>
+  </div>
 <app-botaotopo-component></app-botaotopo-component>
           
         

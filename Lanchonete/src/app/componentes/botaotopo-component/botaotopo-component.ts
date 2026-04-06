@@ -7,10 +7,13 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./botaotopo-component.css'],
 })
 export class BotaotopoComponent {
+show:boolean =  false|| true;
+isShown: boolean = false ||true;
 
-
-  show = false;
-
+//Variáveis para controle de exibição e armazenamento dos dados do serviço.  
+toggleShow(): void {
+  this.isShown = !this.isShown;
+} 
   // escuta o scroll da página
   @HostListener('window:scroll', [])
   onWindowScroll() {

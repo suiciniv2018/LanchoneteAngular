@@ -42,7 +42,7 @@
   z-index: 999999;
   position: fixed;
   width: 100%;
-  margin-top: -63px;
+  margin-top: -11px;
   border-bottom-color: #e9f0f5;
   font-style: italic;
   font-family: cursive; 
@@ -247,17 +247,46 @@ text-align: justify;
 }
 #btn-canvas-compra{
 width: 100%;
-}
-/* ===== Fim Canvas Promoção ===== */
-
-
-
+}/* ===== Fim Canvas Promoção ===== */
 .Container-Carro{
-    margin-top: 90px;
-   zoom:73%;
-   display: block;
+  margin-top: 16px;
+  display: relative;
+  color: white;
+  zoom:90%;
+  scale:0.9
+}
+.cp-novamente{
+margin-top:8px;
+display: inline;
+}
+.container-cartao{
+position: relative;
+left: 58%;
+margin-top: -305px;
+zoom: 90%;
+}
+.icone-container{
+ text-align: center;
+padding: 0px;
+}
+.divisor {
+    margin: 0 15px;
+    font-size: 20px;
+    opacity: 0.6;
 }
 
+
+#divider-short{
+width:57%;
+border:2px solid gray;
+margin-top:20px;
+clear:both;
+}
+
+.cartao{
+  margin-top: -10px;
+  margin-left: -650px;
+}
 
 
 /* ===== Rodapé Geral ===== */

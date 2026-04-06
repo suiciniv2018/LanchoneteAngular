@@ -14,8 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 
 export class HomeComponent {
-isShown = true; //  verdadeiro falso  encapsulamento login/canvas  "controlador"
+  //Variável para controle de exibição de elementos na página.
+  isShown: boolean = false ||true;
 
+//Variáveis para controle de exibição e armazenamento dos dados do serviço.  
+toggleShow(): void {
+  this.isShown = !this.isShown;
+} 
 
   ngOnInit(): void {
     console.log('HomeComponent inicializado!');

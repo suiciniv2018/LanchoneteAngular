@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
 import { BotaotopoComponent } from "../botaotopo-component/botaotopo-component";
 
 @Component({
@@ -12,16 +11,23 @@ import { BotaotopoComponent } from "../botaotopo-component/botaotopo-component";
   styleUrls: ['./cardapio-component.css'],
 })
 export class CardapioComponent {
-isShown = true; // controla exibição do offcanvas
+isShown: boolean = false ||true;
+  CarrinhoService: any;
+  QuantidadeTotal = 0;
+
+//Variáveis para controle de exibição e armazenamento dos dados do serviço.  
+toggleShow(): void {
+  this.isShown = !this.isShown;
+} 
 
   constructor() {
     // inicializações simples
   }
 
   ngOnInit(): void {
-    // chamado após o construtor
-    // aqui você pode inicializar dados, chamar serviços, etc.
-    console.log('LoginComponent inicializado!');
+ this.CarrinhoService.QuantidadeTotal$.subscribe((count: any)=> {
+    this.QuantidadeTotal = count;
+    })
   }
 
   onLogin(form: any) {

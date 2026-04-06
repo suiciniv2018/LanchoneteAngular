@@ -17,13 +17,20 @@ import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
 })
 
 export class CarroCompraComponent implements OnInit {
+isShown: boolean = false ||true;
+  QuantidadeTotal: any;
+  
 
-isShown = true; // controla exibição do offcanvas
+//Variáveis para controle de exibição e armazenamento dos dados do serviço.  
+toggleShow(): void {
+  this.isShown = !this.isShown;
+} 
 
 CarneSelecionadoMercado: any;
 itens: any [] = [];
 total:number = 0;
 item:any;
+  
 
 constructor(private CarrinhoService:CarrinhoService){
 }
@@ -31,6 +38,9 @@ constructor(private CarrinhoService:CarrinhoService){
 ngOnInit():void{
 this.itens = this.CarrinhoService.listarItens();
 this.total = this.CarrinhoService.getTotal();
+ this.CarrinhoService.QuantidadeTotal$.subscribe((count: any)=> {
+    this.QuantidadeTotal = count;
+})
 }
 
 remover(id:number){
@@ -42,6 +52,9 @@ alterarQuantidade(id:number,quantidade:number){
 this.CarrinhoService.alterarQuantidade(id,quantidade);
 this.total = this.CarrinhoService.getTotal();
 }
+
+
+
 
 
 //depois criar serviços e injeçoes de validação de login
