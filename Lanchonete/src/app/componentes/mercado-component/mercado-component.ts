@@ -4,8 +4,8 @@ import{ Router, RouterLink } from '@angular/router';
 import{ BotaotopoComponent } from "../botaotopo-component/botaotopo-component";
 import{ FormsModule } from '@angular/forms';
 import { CarroServiceIMGMarket, CarroServiceIMGMarketVegetariano } from '../../Services/Carro-ServiceLanchesIMG-Market';
-import { Produto } from '../../Typscript/Modelo-Interface-Market';
 import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
+import { Produto } from '../../Typscript/Modelo-Interface-Market';
 
 
 
@@ -13,7 +13,7 @@ import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
   selector: 'app-mercado-component',
   standalone:true,
   imports: [RouterLink, CommonModule, BotaotopoComponent, FormsModule],
-  providers:[ CarroServiceIMGMarket, CarroServiceIMGMarketVegetariano],
+  providers:[ CarroServiceIMGMarket, CarroServiceIMGMarketVegetariano,CarrinhoService],
   templateUrl: './mercado-component.html',
   styleUrls: ['./mercado-component.css'],
 })
@@ -21,9 +21,15 @@ import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
 export class MercadoComponent implements OnInit {
   //Variável para controle de exibição de elementos na página.
   isShown: boolean = false ||true;
-  VegetaSelecionadoMercado: any;
+  QuantidadeTotal: any;
   CarneSelecionadoMercado: any;
+itens: any [] = [];
+total:number = 0;
+item:any;
+VegetaSelecionadoMercado: any;
   CarrinhoService: any;
+  
+  
 //Fim Variáveis para controle de exibição e armazenamento dos dados do serviço.
 
 //Variáveis para controle de exibição e armazenamento dos dados do serviço.  
@@ -38,31 +44,49 @@ constructor(private carroService:CarroServiceIMGMarket,
    private router:Router) {}
 //Fim Injeção do serviço e do roteador para navegação.
 
-//Método para inicialização do componente, onde é chamado o serviço para obter os dados dos produtos do mercado.
-  ngOnInit():void{
-    this.carroService.setCarnePremium();//chama o serviço para obter os dados dos produtos do mercado.
-    this.CarneSelecionadoMercado = this.carroService.getCarnePremiumAll();//chama o serviço para obter os dados dos produtos do mercado
-    
-    this.carroServiceVeg.setVegetariano();//chama o serviço para obter os dados dos produtos do mercado.   
-    this.VegetaSelecionadoMercado = this.carroServiceVeg.getVegetarianoAll();//chama o serviço para obter a imagem do carro.ServiceIMG-Market.ts
+ngOnInit(): void {
+  this.carroService.setCarnePremium();
+  this.CarneSelecionadoMercado = this.carroService.getCarnePremiumAll();
 
+  this.carroServiceVeg.setVegetariano();
+  this.VegetaSelecionadoMercado = this.carroServiceVeg.getVegetarianoAll();
 
+  this.itens = this.carrinhoService.listarItens();
+  this.total = this.carrinhoService.getTotal();
+
+  this.carrinhoService.QuantidadeTotal$.subscribe((count: any) => {
+    this.QuantidadeTotal = count;
+  });
 }
-//fim Método para inicialização do componente, onde é chamado o serviço para obter os dados dos produtos do mercado.
 
-//Método para navegação para a página de compra ao clicar no botão "Comprar".
-Comprar(produto: Produto): void{
-  this.carrinhoService.adicionarItem(produto); 
-  this.router.navigate(['/carro-compra'])
+remover(id: number) {
+  this.carrinhoService.removerItem(id);
+  this.itens = this.carrinhoService.listarItens();
+  this.total = this.carrinhoService.getTotal();
 }
-//fim Método para navegação para a página de compra ao clicar no botão "Comprar".
 
-//Método para controle de exibição de elementos na página, alternando o valor da variável isShown.
-onLogin(form: any) {
-   const { email, senha } = form.value;
+alterarQuantidade(id: number, quantidade: number) {
+  this.carrinhoService.alterarQuantidade(id, quantidade);
+  this.total = this.carrinhoService.getTotal();
+}
+
+Comprar(produto: Produto): void {
+  this.carrinhoService.adicionarItem(produto);
+  this.router.navigate(['/carro-compra']);
+}
+
+
+
+
+//depois criar serviços e injeçoes de validação de login
+  onLogin(form: any) {
+    const { email, senha } = form.value;
+
     if (email === 'admin@teste.com' && senha === '1234') {
-    alert('Login realizado com sucesso!');
+      alert('Login realizado com sucesso!');
     } else {
       alert('Usuário ou senha inválidos!');
     }
-  }}
+  }
+
+}

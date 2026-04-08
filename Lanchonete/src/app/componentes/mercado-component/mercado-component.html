@@ -35,18 +35,31 @@
             <li><a class="dropdown-item" [routerLink]="['/galeria']">Galeria</a></li>
             <li><a class="dropdown-item" [routerLink]="['/carro-compra']">Carro compra</a></li>
           </ul></li></ul></div>
+ <div class="position-relative">
 
-          <div class="col-3 ">
-        <li class="nav-item">
-          <button type="button" class="btn btn-primary text-white" [routerLink]="['/carro-compra']">
-            <i class="fas fa-cart-shopping fa-bounce"></i>Carro Compra</button></li>
+  <!-- Ícone do carrinho -->
+  <button type="button"
+          class="btn btn-primary text-white"
+          [routerLink]="['/carro-compra']">
+    <i class="fas fa-shopping-cart"></i>
+  </button>
+
+  <!-- Badge com quantidade -->
+  <span *ngIf="QuantidadeTotal > 0"
+        class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+    {{ QuantidadeTotal }}
+  </span>
+
 </div>
-    <div class=" col-sm-2 d-flex nav-item ">
-      <form class="d-flex">
-        <input class="form-control px-5  text-center" type="search" placeholder="Buscar">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-     </div>
+
+<div class="col-sm-2 d-flex nav-item">
+  <form class="d-flex">
+    <input class="form-control px-5 text-center" type="search" placeholder="Buscar">
+    <button class="btn btn-outline-success" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
 
          <li class="col-sm-2 d-flex px-5 ">
   <button  type="button" class="nav-link text-white d-flex flex-column align-items-center gy-4"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLogin" aria-controls="offcanvasLogin">
@@ -383,7 +396,9 @@
           <!-- SLIDE 2 -->
     <div class="carousel-item">
       <div class="row">
+
         @for (carroServiceVeg of VegetaSelecionadoMercado.slice(4,8); track $index) {
+          
           <div class="col-md-3 d-flex">
             <div class="card-Mercado">
               <img [src]="carroServiceVeg.Image" class="card-img-top">

@@ -2,16 +2,15 @@ import { Injectable } from "@angular/core";
 import { Produto } from "../Typscript/Modelo-Interface-Market";
 import { BehaviorSubject } from "rxjs";
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CarrinhoService {
 
-private itens: { produto: Produto, quantidade: number }[] = [];
+  private quantidadeTotalSubject = new BehaviorSubject<number>(0);
+  QuantidadeTotal$ = this.quantidadeTotalSubject.asObservable();
 
-private TotalCarroIconesubject= new BehaviorSubject<number>(0);
-QuantidadeTotal$ = this.TotalCarroIconesubject.asObservable();
+  itens: { produto: Produto, quantidade: number }[] = [];
 
   constructor() {
     this.carregarLocalStorage();
@@ -36,9 +35,9 @@ QuantidadeTotal$ = this.TotalCarroIconesubject.asObservable();
     }
   }
 
-  private AtualizaQuantidadeTotal(){
-    const QuantidadeTotal = this.itens.reduce((soma,item)=> soma + item.quantidade,0);
-    this.TotalCarroIconesubject.next(QuantidadeTotal);
+  private AtualizaQuantidadeTotal() {
+    const QuantidadeTotal = this.itens.reduce((soma, item) => soma + item.quantidade, 0);
+    this.quantidadeTotalSubject.next(QuantidadeTotal);
   }
 
   adicionarItem(produto: Produto): void {
@@ -66,6 +65,7 @@ QuantidadeTotal$ = this.TotalCarroIconesubject.asObservable();
       item.quantidade = quantidade;
       if (item.quantidade <= 0) {
         this.removerItem(id);
+        return;
       }
     }
     this.salvarLocalStorage();
@@ -82,5 +82,5 @@ QuantidadeTotal$ = this.TotalCarroIconesubject.asObservable();
     );
   }
 
-    
-  }
+
+}

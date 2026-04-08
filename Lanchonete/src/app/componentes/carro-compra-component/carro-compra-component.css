@@ -42,7 +42,7 @@
   z-index: 999999;
   position: fixed;
   width: 100%;
-  margin-top: -11px;
+  margin-top: 4px;
   border-bottom-color: #e9f0f5;
   font-style: italic;
   font-family: cursive; 
@@ -248,47 +248,44 @@ text-align: justify;
 #btn-canvas-compra{
 width: 100%;
 }/* ===== Fim Canvas Promoção ===== */
-.Container-Carro{
-  margin-top: 16px;
-  display: relative;
-  color: white;
-  zoom:90%;
-  scale:0.9
-}
-.cp-novamente{
-margin-top:8px;
-display: inline;
-}
-.container-cartao{
-position: relative;
-left: 58%;
-margin-top: -305px;
-zoom: 90%;
-}
+
 .icone-container{
  text-align: center;
 padding: 0px;
 }
-.divisor {
-    margin: 0 15px;
-    font-size: 20px;
-    opacity: 0.6;
+
+.Container-Carro{
+  margin-top:1px;
+  margin-bottom: 90px;
+  scale:0.89;
+  border-radius: 10%;
+}
+.Container-Carro :hover{
+background-color: #dd0f0f;
+
+color:white
+}
+.market-carroInterno{
+margin-top: -20px;
+}
+.cp-novamente{
+  background-color: white;
+color:black;
+text-align: center;
+border: #212529;
+border-radius: 5px;
+}
+.cp-novamente:hover{
+  background-color: white;
+  color: #e9f0f5;
+  border: 1px solid white;
+  cursor: default;
 }
 
 
-#divider-short{
-width:57%;
-border:2px solid gray;
-margin-top:20px;
-clear:both;
+span{
+  padding-left: 5px;
 }
-
-.cartao{
-  margin-top: -10px;
-  margin-left: -650px;
-}
-
-
 /* ===== Rodapé Geral ===== */
 footer{
   margin-top: 74px;

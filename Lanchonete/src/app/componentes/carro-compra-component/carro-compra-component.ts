@@ -19,6 +19,13 @@ import { CarrinhoService } from '../../Services/Carrinho-Service-Market';
 export class CarroCompraComponent implements OnInit {
 isShown: boolean = false ||true;
   QuantidadeTotal: any;
+  CarneSelecionadoMercado: any;
+itens: any [] = [];
+total:number = 0;
+item:any;
+carroService: any;
+  carrinhoService: any;
+  
   
 
 //Variáveis para controle de exibição e armazenamento dos dados do serviço.  
@@ -26,11 +33,7 @@ toggleShow(): void {
   this.isShown = !this.isShown;
 } 
 
-CarneSelecionadoMercado: any;
-itens: any [] = [];
-total:number = 0;
-item:any;
-  
+
 
 constructor(private CarrinhoService:CarrinhoService){
 }
@@ -51,6 +54,9 @@ this.total = this.CarrinhoService.getTotal();
 alterarQuantidade(id:number,quantidade:number){
 this.CarrinhoService.alterarQuantidade(id,quantidade);
 this.total = this.CarrinhoService.getTotal();
+}
+getQuantidade(id: number) {
+  return this.carrinhoService.getQuantidade(id);
 }
 
 

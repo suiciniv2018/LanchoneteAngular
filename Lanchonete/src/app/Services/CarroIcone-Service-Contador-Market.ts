@@ -10,12 +10,11 @@ export class cartcount {
 
   private cartCount = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCount.asObservable();
-  getcartCount: any;
   constructor() {}
 setcartCount(count:number){
   this.cartCount.next(count);
 }
-gercartCount(count:number){
+getcartCount(count:number){
   return this.cartCount.value;
 }
 
