@@ -24,6 +24,7 @@ export class HomeComponent {
 itens: any [] = [];
 total:number = 0;
 item:any;
+  AtualizarQtdTotalPromo: any;
   
 
 //Variáveis para controle de exibição e armazenamento dos dados do serviço.  
@@ -34,20 +35,26 @@ toggleShow(): void {
 constructor(private CarrinhoService:CarrinhoService){
 }
   ngOnInit(): void {
-   this.itens = this.CarrinhoService.listarItens();
+this.itens = this.CarrinhoService.listarItens();
 this.total = this.CarrinhoService.getTotal();
- this.CarrinhoService.QuantidadeTotal$.subscribe((count: any)=> {
+this.CarrinhoService.QuantidadeTotal$.subscribe((count: any)=> {
     this.QuantidadeTotal = count;
-})
+
+
+    });
+
 }
 
 remover(id:number){
-this.CarrinhoService.removerItem(id);
+this.CarrinhoService.removerItem(id);  
 this.itens = this.CarrinhoService.listarItens();
 this.total = this.CarrinhoService.getTotal();
+
+
 }
 alterarQuantidade(id:number,quantidade:number){
 this.CarrinhoService.alterarQuantidade(id,quantidade);
+
 this.total = this.CarrinhoService.getTotal();
 }
 

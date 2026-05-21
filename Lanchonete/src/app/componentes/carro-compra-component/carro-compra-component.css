@@ -259,12 +259,9 @@ padding: 0px;
   margin-bottom: 90px;
   scale:0.89;
   border-radius: 10%;
+  
 }
-.Container-Carro :hover{
-background-color: #dd0f0f;
 
-color:white
-}
 .market-carroInterno{
 margin-top: -20px;
 }
@@ -276,12 +273,14 @@ border: #212529;
 border-radius: 5px;
 }
 .cp-novamente:hover{
-  background-color: white;
+  background-color: rgb(62, 106, 226);
   color: #e9f0f5;
   border: 1px solid white;
   cursor: default;
 }
-
+.btn-comprar{
+background-color: rgba(157, 142, 255, 0.904);}
+point.mouse{cursor:pointer;}
 
 span{
   padding-left: 5px;

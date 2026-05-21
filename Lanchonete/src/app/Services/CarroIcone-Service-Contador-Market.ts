@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import{ Produto } from '../Typscript/Modelo-Interface-Market';
 
 @Injectable({
 providedIn:'root'
@@ -14,7 +13,7 @@ export class cartcount {
 setcartCount(count:number){
   this.cartCount.next(count);
 }
-getcartCount(count:number){
+getcartCount(){
   return this.cartCount.value;
 }
 

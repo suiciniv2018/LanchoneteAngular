@@ -460,11 +460,11 @@
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col">
-          <div class="card bg-dark text-dark">
+          <div class="card bg-danger text-dark">
             <div
               class="card-body w-100 h-100 px-2"
               style="
-                border: color-mix(in srgb, rgb(243, 227, 0) 90%, rgb(18, 18, 19) 10%) solid 5px;
+                border: color-mix(in srgb, rgb(243, 227, 0) 90%, rgb(18, 18, 19) 10%) solid 1px;
               "
             >
               <div class="row">
@@ -493,7 +493,7 @@
 
                   <div class="card market-carroInterno mb-3">
                     <div class="card mb-3" *ngFor="let item of itens">
-                      <div class="card-body">
+                      <div class="card-body bg-light text-dark">
                         <div class="d-flex justify-content-between">
                           <!-- IMAGEM + NOME + DESCRIÇÃO -->
                           <div class="d-flex flex-row align-items-center">
@@ -539,18 +539,18 @@
                   </div>
                 </div>
                 <div class="col-lg-5">
-                  <div class="card bg-white text-dark rounded-3">
-                    <div class="card-body">
+                  <div class="card bg-white text-white rounded-3">
+                    <div class="card-body bg-dark text-white">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Cartão</h5>
                         <img src="" class="img-fluid rounded-3" style="width: 50px" alt="Avatar" />
                       </div>
 
-                      <p class="small mb-2" bg-dark>Tipo de cartão</p>
-                      <a href="#!" type="submit" class="text-dark">
+                      <p class="small mb-2" bg-white>Tipo de cartão</p>
+                      <a href="#!" type="submit" class="text-white">
                         <i class="fab fa-cc-mastercard fa-4x me-3"></i>
                       </a>
-                      <a href="#!" type="submit" class="text-dark">
+                      <a href="#!" type="submit" class="text-white">
                         <i class="fab fa-cc-visa fa-4x me-3"></i>
                       </a>
 
@@ -628,7 +628,7 @@
                         <p class="mb-2">(Incl. taxas de entrega)</p>
                       </div>
 
-                      <button type="button" class="btn btn-info btn-block btn-lg">
+                      <button type="button" class="btn btn-comprar btn-block btn-lg">
                         <div class="d-flex justify-content-between">
                           <span>R$: {{ total | number: '1.2-2' }}</span>
                           <span

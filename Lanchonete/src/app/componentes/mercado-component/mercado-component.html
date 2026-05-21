@@ -1,6 +1,6 @@
 <div class="slideleft">
-
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="Menu">
+<!-- Inicio NavBar Menu -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="Menu">
   <div class="container-fluid d-flex justify-content-between">
     <a class="navbar-brand text-white d-flex flex-column align-items-center px-3" [routerLink]="['/home']"><i class="fas fa-hamburger"></i> Nome Loja</a>
 
@@ -23,6 +23,7 @@
           <ul class="dropdown-menu">
            <li><a class="dropdown-item" href="#Cardhist">Nossa História</a></li>
             <li><a class="dropdown-item" href="#Cardhamb">Nossa Carne</a></li>
+            <li><a class="dropdown-item" href="#CardconHecer">Nosso Local</a></li>
             <li><a class="dropdown-item" href="#Sobre">Mapa do Site</a></li>
           </ul>
         </li>
@@ -32,10 +33,12 @@
             <i class="fas fa-cog"></i> Mais opções</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/cardapio']">Cardápio</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/mercado']">Comprar Lanche</a></li>
             <li><a class="dropdown-item" [routerLink]="['/galeria']">Galeria</a></li>
             <li><a class="dropdown-item" [routerLink]="['/carro-compra']">Carro compra</a></li>
           </ul></li></ul></div>
- <div class="position-relative">
+
+  <div class="position-relative">
 
   <!-- Ícone do carrinho -->
   <button type="button"
@@ -66,6 +69,7 @@
     <i class="fas fa-user"></i> Faça Login </button>
   </div>
 </nav>
+
 <!-- Canvas de Login -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasLogin" aria-labelledby="offcanvasLoginLabel">
   <div class="offcanvas-header h-10">
@@ -145,12 +149,12 @@
             <div class="carousel-item">
               <div class="cardCanvas-promocao bg-primary text-black">
                 <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
-                <div class="card-body-canvas">
+                <div class="card-body-Canvas">
                   <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
                   <ul>
-                  <li> Preço: R$ 18,00 unidade</li>
-                  <li>Preço: R$ 20,00 unidade</li>
-                  <li>Preço: R$ 30,00 unidade</li>
+                  <li>valor: R$ 18,00 unidade</li>
+                  <li>valor: R$ 20,00 unidade</li>
+                  <li>valor: R$ 30,00 unidade</li>
                   </ul>
                   <h5 class="card-title-Canvas bg-warning">Descrição</h5>
                   <ul>
@@ -201,7 +205,7 @@
             <div class="carousel-item">
               <div class="cardCanvas-promocao bg-primary text-black">
                 <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
-                <div class="card-body-canvas">
+                <div class="card-body-Canvas">
                   <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
                   <ul>
                   <li> Preço: R$ 18,00 unidade</li>
@@ -258,12 +262,12 @@
             <div class="carousel-item">
               <div class="cardCanvas-promocao bg-primary text-black">
                 <img src="assets/img/AOCQ0018.JPG" class="card-img-top" alt="Smalt bacon">
-                <div class="card-body-canvas">
+                <div class="card-body-Canvas">
                   <h5 class="card-title-Canvas bg-warning">Smalt bacon</h5>
                   <ul>
-                  <li>valor: R$ 18,00 unidade</li>
-                  <li>valor: R$ 20,00 unidade</li>
-                  <li>valor: R$ 30,00 unidade</li>
+                  <li> Preço: R$ 18,00 unidade</li>
+                  <li>Preço: R$ 20,00 unidade</li>
+                  <li>Preço: R$ 30,00 unidade</li>
                   </ul>
                   <h5 class="card-title-Canvas bg-warning">Descrição</h5>
                   <ul>
@@ -282,12 +286,12 @@
           <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
             <span class="carousel-control-next-icon bg-dark"></span>
           </button>
-          </div>
-          </div>        <!-- Fim Carrossel 3 -->
-        </div><!-- Fim row --> 
-       </div>
-      </div>
-    </div>  <!--Fim canvas Promoção-->
+        </div>
+      </div>        <!-- Fim Carrossel 3 -->
+      </div><!-- Fim row --> 
+       </div></div></div>  <!--Fim canvas Promoção-->
+    
+         
 <div class="card-container-compra">
 
   <!-- Título geral -->

@@ -13,7 +13,7 @@ import { Produto } from '../../Typscript/Modelo-Interface-Market';
   selector: 'app-mercado-component',
   standalone:true,
   imports: [RouterLink, CommonModule, BotaotopoComponent, FormsModule],
-  providers:[ CarroServiceIMGMarket, CarroServiceIMGMarketVegetariano,CarrinhoService],
+  providers:[ CarrinhoService, CarroServiceIMGMarket,CarroServiceIMGMarketVegetariano,],
   templateUrl: './mercado-component.html',
   styleUrls: ['./mercado-component.css'],
 })
@@ -28,6 +28,7 @@ total:number = 0;
 item:any;
 VegetaSelecionadoMercado: any;
   CarrinhoService: any;
+CarneSelecionadoPromo: any;
   
   
 //Fim Variáveis para controle de exibição e armazenamento dos dados do serviço.
